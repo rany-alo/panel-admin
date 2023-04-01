@@ -1,0 +1,19 @@
+.paginationContainer {
+    flex-direction: row;
+    margin: auto;
+    align-items: center;
+    margin: 50;
+}
+.btnPagination {
+    align-items: center;
+    text-align: center;
+    background-color: #d7d9ff;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 10px;
+    border-color: black;
+
+}
