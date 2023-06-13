@@ -10,6 +10,7 @@ function CommentAdd() {
 
   const [allArticles, setAllArticles] = useState('');
   const [articleId, setArticleId] = useState('');
+  const [articleTitle, setArticleTitle] = useState('');
   const [content, setContent] = useState('');
   const navigate = useNavigate();
 
@@ -42,6 +43,8 @@ function CommentAdd() {
     getAllArticles();
   }, []);
 
+  console.log(articleId);
+
   return (
     <div className='dashboard-content'>
       <div className='dashboard-content-container'>
@@ -63,15 +66,20 @@ function CommentAdd() {
           <div className="form-group row">
             <label>   Article:
               <select
-                value={allArticles['hydra:member']}
+                value={articleTitle}
                 className="form-control mt-1"
-                onChange={(e) => setArticleId([e.target.value])}>
+                onChange={(e) => {
+                  const selectedIndex = e.target.selectedIndex;
+                  const selectedArticleId = allArticles['hydra:member'][selectedIndex - 1].id;
+                  setArticleId(selectedArticleId);
+                  setArticleTitle(e.target.value);
+                  }}>
                     <option value="">Select un article ....</option>
-                    {allArticles && allArticles['hydra:member'] && allArticles['hydra:member'].map((article, index) => (
-                    <option key={index} value={article.id}>
+                    {allArticles && allArticles['hydra:member'].map(article => {return (
+                    <option key={article.id} value={article.title}>
                         {article.title}
-                    </option>
-                    ))}
+                    </option>)
+                    })}
                 </select>
             </label>
           </div>

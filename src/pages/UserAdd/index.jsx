@@ -11,7 +11,6 @@ function UserAdd() {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
-  const [roles, setRoles] = useState([]);
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
@@ -23,7 +22,6 @@ function UserAdd() {
       firstname,
       lastname,
       email,
-      roles,
       password
     };
     try {
@@ -72,19 +70,6 @@ function UserAdd() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 />
-            </label>
-          </div>
-          <br />
-          <div className="form-group row">
-            <label>
-                  Roles:
-                  <select
-                  value={roles}
-                  className="form-control mt-1"
-                  onChange={(e) => setRoles([e.target.value])}>
-                  <option value="ROLE_ADMIN">Admin</option>
-                  <option value="ROLE_USER">User</option>
-                  </select>
             </label>
           </div>
           <br />
